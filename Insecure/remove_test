@@ -1,0 +1,4 @@
+#!/bin/bash
+rm gecko*
+rm -r Test
+rm -r 0*
