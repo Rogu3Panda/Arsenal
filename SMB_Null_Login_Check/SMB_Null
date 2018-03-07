@@ -7,7 +7,7 @@ echo "Written by Rogu3Panda"
 echo ""
 echo "Script Purpose: Attempt to perform SMB Login"
 echo "Using Blank Username and No Password"
-while getopts ":ht:" opt;do
+while getopts ":ht:o:" opt;do
 
   options_found=1
 
@@ -43,6 +43,7 @@ if ((!options_found));then
 fi
 
 for ip in $(cat $TARGET_FILE);do
-	rpcclient -U "" -N $ip
+	echo "Checking for Null Session on Host: $ip" 2>&1 | tee -a $OUTPUT_FILE
+	rpcclient -U "" -N $ip 2>&1 | tee -a $OUTPUT_FILE
 done
 exit 0
